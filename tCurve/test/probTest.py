@@ -245,11 +245,6 @@ class ProbTest(TestCase):
         expectedResult = 0.0995
         result = integrate(t, n, _f)
         self.assertAlmostEqual(expectedResult, result, 3)
-    def test200_110ShouldReturnCorrectInitialSimpsonValue(self):
-        n = 10
-        t = 1.3
-        expectedResult = 0.9983
-        result = integrate(t,n, _f)
-        self.assertAlmostEqual(expectedResult, result, 1)
+
         
     
