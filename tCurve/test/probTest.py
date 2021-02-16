@@ -249,16 +249,7 @@ class ProbTest(TestCase):
         n = 10
         t = 1.3
         expectedResult = 0.9983
-        result = integrate(t,b, _f)
-        self.assertAlmostEqual(expectedResult, result, 1)
-    #simpson
-    def test300_010ShouldReturnCorrectAreaOfSimpsonColumn(self):
-        lowBound=0
-        n = 10
-        w = 4
-        s = 4
-        expectedResult = 0.2041
-        result = simpson(lowBound,n,s,w)
+        result = integrate(t,n, _f)
         self.assertAlmostEqual(expectedResult, result, 1)
         
     
