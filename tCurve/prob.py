@@ -106,8 +106,16 @@ def _f(u, n):
 
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
 def _integrate(t, n, _f):
-    result = 0
-    return result
+    epsilon = 0.00001
+    highBound = t
+    lowBound = 0
+    simpsonOld = 0.0
+    simpsonNew = epsilon
+    s = 4
+    simpsonOld = simpsonNew
+    w = (highBound - lowBound) / s
+    simpsonNew = (w/3) * (_f(lowBound, n) + 4*_f(lowBound+w, n) + 2*_f(lowBound+2w, n) + 4*_f(lowBound + 3w, n) + 2*_f(lowBound + 4*w, n) + 4*_f(highBound-w, n) + _f(highBOund, n))
+    return simpsonNew
 
 
 
