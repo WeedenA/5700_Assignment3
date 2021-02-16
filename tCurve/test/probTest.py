@@ -1,5 +1,7 @@
 from unittest import TestCase
 from tCurve.prob import prob as prob
+from tCurve.prob import _integrate as integrate
+from tCurve.prob import _f as _f
 import json
 
 
@@ -205,5 +207,43 @@ class ProbTest(TestCase):
         result = prob(self.inputDictionary)
         self.assertIn(self.errorKey, result)
         self.assertIn(self.errorValue, result[self.errorKey])
+    # 200 integrate
+    #    Desired level of confidence: BVA
+    #    I/O analysis:
+    #        inputs: 
+    #            t -> float > 0, mandatory, validated
+    #                nominal = 1.3, low-bound > 0.0
+    #            n -> int >= 3, mandatory, validated
+    #                nominal = 10, low-bound = 3
+    #            _f -> returns float of computer equation
+    #
+    #        output: 0 <= float <= 1
+    #
+    #    Analysis:
+    #        Default tails
+    #        010: nominal n, nominal t
+    #        020: low-bound n, nominal t
+    #        030: nominal n, low-bound t
+    #
+    # Happy paths
+    def test200_010ShouldCalculateNominalCase(self):
+        n = 10
+        t = 1.3
+        expectedResult = 0.9983
+        result = integrate(t, n, _f)
+        self.assertAlmostEqual(expectedResult, result, 3)
+    def test200_020ShouldCalculateEdgeNNominalT(self):
+        n = 3
+        t = 1.3
+        expectedResult = 0.9731
+        result = integrate(t, n, _f)
+        self.assertAlmostEqual(expectedResult, result, 3)
+    def test200_030ShouldCalculateNominalNEdgeT(self):
+        n = 10
+        t = 0.1
+        expectedResult = 0.0995
+        result = integrate(t, n, _f)
+        self.assertAlmostEqual(expectedResult, result, 3)
+        
         
     
