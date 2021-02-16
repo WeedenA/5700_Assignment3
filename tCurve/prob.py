@@ -118,8 +118,13 @@ def _integrate(t, n, _f):
     return simpsonNew
 
 def _simpson(lowBound,n,s,w):
-    result = (_f(lowBound, n) + 4*_f(lowBound+w, n) + 2*_f(lowBound+2w, n) + 4*_f(lowBound + 3w, n) 
-              + 2*_f(lowBound + 4*w, n) + 4*_f(highBound-w, n) + _f(highBOund, n))
-    return result
+    r = _f(lowBound, n) + _f(s*w, n)
+    for x in range(1, s-1):
+        v = lowBound + (x * w)
+        if x % 2 == 0:
+            r = r + (2 * _f(v,n))
+        else:
+            r = r + (4 * _f(v,n))
+    return r
 
 

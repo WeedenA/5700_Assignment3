@@ -2,6 +2,7 @@ from unittest import TestCase
 from tCurve.prob import prob as prob
 from tCurve.prob import _integrate as integrate
 from tCurve.prob import _f as _f
+from tCurve.prob import _simpson as simpson
 import json
 
 
@@ -244,12 +245,20 @@ class ProbTest(TestCase):
         expectedResult = 0.0995
         result = integrate(t, n, _f)
         self.assertAlmostEqual(expectedResult, result, 3)
-    def test300_110ShouldReturnCorrectInitialSimpsonValue(self):
+    def test200_110ShouldReturnCorrectInitialSimpsonValue(self):
         n = 10
         t = 1.3
         expectedResult = 0.9983
         result = integrate(t,b, _f)
         self.assertAlmostEqual(expectedResult, result, 1)
-      
+    #simpson
+    def test300_010ShouldReturnCorrectAreaOfSimpsonColumn(self):
+        lowBound=0
+        n = 10
+        w = 4
+        s = 4
+        expectedResult = 0.2041
+        result = simpson(lowBound,n,s,w)
+        self.assertAlmostEqual(expectedResult, result, 1)
         
     
