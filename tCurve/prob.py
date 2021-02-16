@@ -106,32 +106,7 @@ def _f(u, n):
 
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
 def _integrate(t, n, _f):
-    epsilon = 0.01
-    highBound = 16
-    lowBound = 0
-    simpsonOld = 0
-    simpsonNew = epsilon
-    s = 4
-    var = abs((simpsonNew - simpsonOld) / simpsonNew)
-    while (var > epsilon):
-        simpsonOld = simpsonNew
-        w = (highBound - lowBound) / s
-        simpsonNew = (w/3) * _simpson(lowBound, n, s, w)
-        s = s * 2
-    return simpsonNew
-
-def _simpson(lowBound, n, s, w):
-    r = _f(lowBound, n) + _f(s*w, n)
-    x = 1
-    while (x < s):
-        v = lowBound + (x * w)
-        r = r + (4 * _f(v,n))
-        if x == s-1:
-            break
-        x = x + 1
-        v = lowBound + (x * w)
-        r = r + (2 * _f(v,n))
-        return r
+    pass
 
 
 
