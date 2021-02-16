@@ -106,7 +106,8 @@ def _f(u, n):
 
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
 def _integrate(t, n, _f):
-    pass
+    result = 0
+    return result
 
 
 
