@@ -205,3 +205,5 @@ class ProbTest(TestCase):
         result = prob(self.inputDictionary)
         self.assertIn(self.errorKey, result)
         self.assertIn(self.errorValue, result[self.errorKey])
+        
+    

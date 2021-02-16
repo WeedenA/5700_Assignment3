@@ -106,4 +106,22 @@ def _f(u, n):
 
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
 def _integrate(t, n, _f):
-    pass
+    epsilon = 0.01
+    highBound = 16
+    lowBound = 0
+    simpsonOld = 0
+    simpsonNew = epsilon
+    s = 4
+    var = abs((simpsonNew - simpsonOld) / simpsonNew)
+    while (var > epsilon):
+        simpsonOld = simpsonNew
+        w = (highBound - lowBound) / s
+        simpsonNew = (w/3) * 1
+        s = s * 2
+    return simpsonNew
+
+
+
+
+
+
